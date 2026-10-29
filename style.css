@@ -551,3 +551,58 @@ h2 { font-size: clamp(30px, 3.3vw, 43px); line-height: 1.4; letter-spacing: -.04
   .filter-button[aria-pressed="true"] { outline: 2px solid Highlight; outline-offset: 2px; }
   .status-dot, .menu-icon span { background: ButtonText; }
 }
+
+/* A small resident companion: decorative, dismissible, and quiet by default. */
+.site-pet {
+  --pet-body: #f0dcc3;
+  --pet-head: #f8ecdd;
+  --pet-ear: #e6b18a;
+  --pet-pupil: #372a20;
+  --pet-blush: rgba(220, 138, 102, .55);
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+}
+:root[data-theme="dark"] .site-pet { --pet-body: #4a372a; --pet-head: #57422f; --pet-ear: #8d5c40; --pet-pupil: #1f1812; --pet-blush: rgba(163, 96, 69, .55); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .site-pet { --pet-body: #4a372a; --pet-head: #57422f; --pet-ear: #8d5c40; --pet-pupil: #1f1812; --pet-blush: rgba(163, 96, 69, .55); } }
+.pet-button { position: relative; width: 78px; height: 78px; padding: 0; border: 0; background: none; cursor: pointer; }
+.pet-button:focus-visible { outline: 2px solid var(--focus); outline-offset: 5px; border-radius: 50%; }
+.pet-art { width: 100%; height: 100%; overflow: visible; color: var(--ink); filter: drop-shadow(0 9px 12px rgba(60, 35, 15, .16)); animation: pet-bob 4.8s ease-in-out infinite; }
+.pet-body, .pet-head, .pet-ear, .pet-paw { stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.pet-body, .pet-head, .pet-paw { fill: var(--pet-head); }
+.pet-ear { fill: var(--pet-body); }
+.pet-ear-inner { fill: var(--pet-ear); stroke: none; }
+.pet-eye-white { fill: #fffcf5; stroke: none; }
+.pet-pupil { fill: var(--pet-pupil); transform: translate(calc(var(--px, 0) * 1px), calc(var(--py, 0) * 1px)); }
+.pet-blush { fill: var(--pet-blush); stroke: none; }
+.pet-nose { fill: var(--pet-ear); stroke: none; }
+.pet-mouth { stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.pet-lid { fill: var(--pet-head); stroke: none; transform-box: fill-box; transform-origin: center; transform: scaleY(0); animation: pet-blink 6.4s infinite; }
+.pet-tail { transform-box: fill-box; transform-origin: left center; animation: pet-tail 3.6s ease-in-out infinite; }
+.pet-button:hover .pet-art { animation-play-state: paused; transform: translateY(-3px) rotate(-2deg); }
+.pet-button:hover .pet-tail { animation-play-state: paused; }
+.pet-button[data-mood="happy"] .pet-art { animation: pet-hop .55s ease; }
+.pet-bubble { position: absolute; right: 10px; bottom: 86px; width: max-content; max-width: min(238px, 72vw); padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px 12px 2px 12px; background: var(--raised); box-shadow: var(--shadow); }
+.pet-bubble p { color: var(--ink); font-size: 12px; line-height: 1.65; }
+.pet-hide { position: absolute; top: 2px; right: 0; display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); color: var(--muted); font-size: 13px; line-height: 1; cursor: pointer; opacity: 0; transition: opacity .2s ease; }
+.site-pet:hover .pet-hide, .pet-hide:focus-visible { opacity: 1; }
+.pet-hide:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.pet-restore { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); z-index: 40; padding: 7px 11px; border: 1px solid var(--line); border-radius: 20px; background: var(--raised); color: var(--muted); font: 11px/1.4 var(--mono); cursor: pointer; }
+.pet-restore:hover { color: var(--accent); border-color: var(--accent); }
+@keyframes pet-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes pet-tail { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(9deg); } }
+@keyframes pet-blink { 0%, 91%, 95%, 100% { transform: scaleY(0); } 92%, 94% { transform: scaleY(1); } }
+@keyframes pet-hop { 0%, 100% { transform: translateY(0) scale(1); } 40% { transform: translateY(-7px) scale(1.03); } }
+@media (max-width: 700px) {
+  .pet-button { width: 62px; height: 62px; }
+  .pet-bubble { bottom: 70px; }
+  .pet-hide { opacity: 1; top: -2px; right: -2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pet-art, .pet-tail, .pet-lid, .pet-button[data-mood="happy"] .pet-art { animation: none; }
+  .pet-pupil { transform: none; }
+  .pet-button:hover .pet-art { transform: none; }
+}

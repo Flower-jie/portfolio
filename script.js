@@ -42,6 +42,94 @@
     });
   }
 
+  function initPet() {
+    const pet = byId('site-pet');
+    const button = byId('pet-button');
+    const bubble = byId('pet-bubble');
+    const text = byId('pet-text');
+    const hide = byId('pet-hide');
+    const restore = byId('pet-restore');
+    const tips = [
+      '今天也写一行代码吧。',
+      '先让它跑通，再让它更好。',
+      '遇到 bug，先看日志。',
+      '学到的，写下来。',
+      '少一点空想，多一次运行。',
+      'RAG 的关键：先检索，再回答。',
+      '不确定的时候，回到源码。',
+      '把问题拆小，进度就会变快。'
+    ];
+    let tipIndex = 0;
+    let timer = 0;
+
+    function setVisible(visible, focus) {
+      pet.hidden = !visible;
+      restore.hidden = visible;
+      if (!visible) closeBubble();
+      if (focus) (visible ? button : restore).focus();
+    }
+
+    function closeBubble() {
+      bubble.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      window.clearTimeout(timer);
+    }
+
+    function openBubble() {
+      text.textContent = tips[tipIndex % tips.length];
+      tipIndex += 1;
+      bubble.hidden = false;
+      button.setAttribute('aria-expanded', 'true');
+      window.clearTimeout(timer);
+      timer = window.setTimeout(closeBubble, 7000);
+    }
+
+    let hidden = false;
+    try { hidden = localStorage.getItem('flower-jie-pet-hidden') === '1'; } catch (_) { /* Persistence is optional. */ }
+    setVisible(!hidden, false);
+
+    button.addEventListener('click', () => {
+      if (bubble.hidden) openBubble();
+      else closeBubble();
+      button.dataset.mood = 'happy';
+      window.setTimeout(() => { delete button.dataset.mood; }, 600);
+    });
+    hide.addEventListener('click', () => {
+      try { localStorage.setItem('flower-jie-pet-hidden', '1'); } catch (_) { /* Persistence is optional. */ }
+      setVisible(false, true);
+    });
+    restore.addEventListener('click', () => {
+      try { localStorage.removeItem('flower-jie-pet-hidden'); } catch (_) { /* Persistence is optional. */ }
+      setVisible(true, true);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !bubble.hidden) {
+        closeBubble();
+        button.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (!bubble.hidden && !pet.contains(event.target) && !restore.contains(event.target)) closeBubble();
+    });
+
+    const calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    if (!calm && finePointer) {
+      let frame = 0;
+      window.addEventListener('pointermove', (event) => {
+        if (pet.hidden || frame) return;
+        frame = window.requestAnimationFrame(() => {
+          const box = button.getBoundingClientRect();
+          const x = Math.max(-1, Math.min(1, (event.clientX - (box.left + box.width / 2)) / 160));
+          const y = Math.max(-1, Math.min(1, (event.clientY - (box.top + box.height / 2)) / 160));
+          button.style.setProperty('--px', (x * 1.6).toFixed(2));
+          button.style.setProperty('--py', (y * 1.4).toFixed(2));
+          frame = 0;
+        });
+      }, { passive: true });
+    }
+  }
+
   function initNavigation() {
     const header = byId('site-header');
     const navigation = byId('navigation');
@@ -374,6 +462,7 @@
   elements.retry.addEventListener('click', () => loadProjects(true));
 
   initTheme();
+  initPet();
   initNavigation();
   byId('current-year').textContent = String(new Date().getFullYear());
   loadProjects();
