@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    { "id": "ai-knowledge", "label": "AI 与知识库" },
+    { "id": "education", "label": "在线教育" },
+    { "id": "local-life", "label": "本地生活" },
+    { "id": "commerce", "label": "电商与外卖" },
+    { "id": "developer-tools", "label": "开发者工具" }
+  ],
+  "projects": [
+    {
+      "id": "learnhub-ai",
+      "name": "知行 · LearnHub AI",
+      "description": "独立知识库学习助手：支持资料导入、分块索引、来源引用、会话与学习笔记。H2 本地持久化；默认词项哈希检索无需 API，语义向量与模型问答可自行配置兼容服务。",
+      "categories": ["ai-knowledge", "education"],
+      "technologies": ["Java 21", "Spring Boot 3.5", "H2", "RAG"],
+      "kind": "新项目实践",
+      "status": "本地学习版",
+      "visibility": "仅源码入口 · 暂无在线后端演示",
+      "featured": true,
+      "mark": "AI",
+      "accent": "orange",
+      "links": {
+        "github": "https://github.com/Flower-jie/learnhub-ai",
+        "gitee": "https://gitee.com/Sunflower-hua/learnhub-ai"
+      }
+    },
+    {
+      "id": "tjxt-ai",
+      "name": "天机学堂 · AI 探索",
+      "description": "在线教育场景的课程学习与微服务实践，围绕天机学堂理解业务拆分与服务协作，并学习 Spring AI 在教育应用中的接入。提供公开脱敏版源码。",
+      "categories": ["education", "ai-knowledge"],
+      "technologies": ["Java 17", "Spring Boot 3", "微服务", "Spring AI"],
+      "kind": "课程实践",
+      "status": "公开脱敏版",
+      "visibility": "公开源码 · 非商业交付",
+      "featured": false,
+      "mark": "EDU",
+      "accent": "blue",
+      "links": {
+        "github": "https://github.com/Flower-jie/tjxt-ai",
+        "gitee": "https://gitee.com/Sunflower-hua/tjxt-ai-public"
+      }
+    },
+    {
+      "id": "dark-horse-review",
+      "name": "黑马点评",
+      "description": "本地生活场景的课程实践，通过商铺、点评等业务学习 Redis 缓存及常见后端问题。保留学习路径，使用公开脱敏版分享代码。",
+      "categories": ["local-life"],
+      "technologies": ["Java 8", "Spring Boot 2", "Redis"],
+      "kind": "课程实践",
+      "status": "公开脱敏版",
+      "visibility": "公开源码 · 非商业交付",
+      "featured": false,
+      "mark": "LOC",
+      "accent": "green",
+      "links": {
+        "github": "https://github.com/Flower-jie/dark-horse-review",
+        "gitee": "https://gitee.com/Sunflower-hua/dark-horse-review-public"
+      }
+    },
+    {
+      "id": "sky-take-out",
+      "name": "苍穹外卖",
+      "description": "外卖业务的课程实践，围绕菜品与订单流程学习后端接口、MyBatis 数据访问和 WebSocket 实时通信。源码为公开脱敏版，并非运营中的商业产品。",
+      "categories": ["commerce"],
+      "technologies": ["Spring Boot 2.7", "MyBatis", "WebSocket"],
+      "kind": "课程实践",
+      "status": "公开脱敏版",
+      "visibility": "公开源码 · 非商业交付",
+      "featured": false,
+      "mark": "API",
+      "accent": "ochre",
+      "links": {
+        "github": "https://github.com/Flower-jie/sky-take-out",
+        "gitee": "https://gitee.com/Sunflower-hua/sky-take-out-public"
+      }
+    },
+    {
+      "id": "portfolio",
+      "name": "这份个人作品集",
+      "description": "用原生 HTML、CSS 与 JavaScript 整理学习项目。通过 JSON 数据生成分类、搜索和双平台源码入口，支持系统主题与深浅色切换，让更新回到内容本身。",
+      "categories": ["developer-tools"],
+      "technologies": ["HTML", "CSS", "JavaScript", "JSON"],
+      "kind": "个人站点",
+      "status": "公开源码",
+      "visibility": "静态作品集 · 持续维护",
+      "featured": false,
+      "mark": "</>",
+      "accent": "neutral",
+      "links": {
+        "github": "https://github.com/Flower-jie/portfolio",
+        "gitee": "https://gitee.com/Sunflower-hua/portfolio"
+      }
+    }
+  ]
+}

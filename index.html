@@ -3,92 +3,157 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flower Jie - 个人作品集</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Flower Jie / 花俊杰的个人作品集。记录 Java 后端与 AI 应用的学习、课程实践和新项目探索，在 GitHub 与 Gitee 分享源码。">
+  <title>Flower Jie / 花俊杰 — 把想法写成作品</title>
+  <script>
+    (() => {
+      let theme = 'system';
+      try {
+        const saved = localStorage.getItem('flower-jie-theme');
+        if (['light', 'dark', 'system'].includes(saved)) theme = saved;
+      } catch (_) { /* Storage is optional; the system theme remains available. */ }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#home" class="logo">Flower Jie</a>
-      <ul class="nav-links">
-        <li><a href="#about">关于</a></li>
-        <li><a href="#projects">项目</a></li>
-        <li><a href="#contact">联系</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>你好，我是 <span class="highlight">Flower Jie</span></h1>
-      <p class="subtitle">全栈开发者 · 开源爱好者</p>
-      <p class="description">热爱构建优雅、实用的软件，专注于 Web 开发。</p>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="container">
-      <h2>关于我</h2>
-      <p>我是一名热爱编程的开发者，乐于探索新技术，追求代码的简洁与高效。在工作中注重团队协作，享受从 0 到 1 构建产品。</p>
-      <div class="skills">
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">React</span>
-        <span class="skill-tag">Vue</span>
-        <span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">Docker</span>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Flower Jie，返回首页">
+        <span class="brand-mark" aria-hidden="true">fj.</span>
+        <span>Flower Jie<span class="brand-divider" aria-hidden="true"> / </span><span class="brand-name">花俊杰</span></span>
+      </a>
+      <nav class="navigation" id="navigation" aria-label="主导航">
+        <a href="#projects">项目集</a>
+        <a href="#knowledge">AI 探索</a>
+        <a href="#learning">学习路线</a>
+        <a href="#contact">一起交流 <span aria-hidden="true">↗</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" hidden>
+          <span class="theme-symbol" id="theme-symbol" aria-hidden="true">◐</span>
+          <span id="theme-label">跟随系统</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>
+          <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+          <span id="nav-toggle-label" class="sr-only">打开导航菜单</span>
+        </button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section id="projects" class="projects">
-    <div class="container">
-      <h2>项目展示</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>任务管理应用</h3>
-          <p>基于 React + Node.js 的全栈任务管理工具，支持实时协作。</p>
-          <div class="project-tags">
-            <span>React</span><span>Node.js</span><span>MongoDB</span>
-          </div>
+  <main id="main" tabindex="-1">
+    <section class="hero container" id="home" aria-labelledby="hero-title" tabindex="-1">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="small-cross" aria-hidden="true">+</span> BUILD · LEARN · SHARE</p>
+        <h1 id="hero-title">把想法，<br>写成可以运行的<span class="hero-emphasis">作品。</span></h1>
+        <p class="hero-intro">你好，我是 <strong>Flower Jie / 花俊杰</strong>。<br>在 Java 与 AI 应用之间，边学、边做、边记录。</p>
+        <p class="hero-description">这里不是一份完美的答卷，而是从课程实践到新项目探索，持续生长的代码档案。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">翻开我的项目集 <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://github.com/Flower-jie" target="_blank" rel="noopener noreferrer">GitHub 个人主页 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></a>
         </div>
-        <div class="project-card">
-          <h3>天气仪表盘</h3>
-          <p>调用第三方 API 的天气可视化面板，支持多城市对比。</p>
-          <div class="project-tags">
-            <span>Vue</span><span>ECharts</span><span>REST API</span>
+        <div class="hero-footnote"><span class="status-dot" aria-hidden="true"></span> 保持好奇，持续实践。<span class="footnote-rule" aria-hidden="true"></span> LEARNING IN PUBLIC</div>
+      </div>
+
+      <div class="hero-art" aria-label="学习工作台：从 Java 基础，到后端实践，再到 AI 应用探索">
+        <div class="art-orbit" aria-hidden="true"></div>
+        <span class="art-spark art-spark-one" aria-hidden="true">+</span>
+        <span class="art-spark art-spark-two" aria-hidden="true">+</span>
+        <div class="workbench">
+          <div class="workbench-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>flower-jie / learning.log</span><span aria-hidden="true">↗</span></div>
+          <div class="workbench-body">
+            <div class="workbench-heading"><span class="code-mark" aria-hidden="true">{ }</span><span>一个想法的<br><strong>生长过程</strong></span></div>
+            <div class="code-note"><span class="code-line-number" aria-hidden="true">01</span><code><span class="code-key">while</span> (curious) {</code></div>
+            <div class="code-note"><span class="code-line-number" aria-hidden="true">02</span><code>&nbsp; learn(); build(); share();</code></div>
+            <div class="code-note"><span class="code-line-number" aria-hidden="true">03</span><code>}</code><span class="code-caret" aria-hidden="true"></span></div>
+            <div class="workbench-path"><span>JAVA</span><span aria-hidden="true">→</span><span>BACKEND</span><span aria-hidden="true">→</span><span class="path-active">AI</span></div>
           </div>
+          <div class="workbench-bottom"><span><span class="status-dot" aria-hidden="true"></span> 少一点空想，多一次运行</span><span aria-hidden="true">↵</span></div>
         </div>
-        <div class="project-card">
-          <h3>CLI 工具集</h3>
-          <p>一套提升开发效率的命令行小工具，支持自定义配置。</p>
-          <div class="project-tags">
-            <span>Python</span><span>Click</span><span>Shell</span>
-          </div>
+        <div class="field-note"><span class="note-pin" aria-hidden="true"></span><p class="note-label">A NOTE TO MYSELF</p><p>学到的，写下来。<br>想到的，做出来。</p><span class="note-signature">Flower Jie</span></div>
+        <p class="art-caption"><span aria-hidden="true">↳</span> 不急着成为专家，先认真做好每一次实践。</p>
+      </div>
+    </section>
+
+    <div class="principles-strip">
+      <div class="container principles-inner"><span>以问题为起点</span><span aria-hidden="true">+</span><span>以代码做验证</span><span aria-hidden="true">+</span><span>以分享促学习</span><span class="strip-note">SMALL STEPS. REAL PROGRESS.</span></div>
+    </div>
+
+    <section class="section container" id="projects" aria-labelledby="projects-title" tabindex="-1">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="projects-title">每一次实践，<br>都有迹可循<span class="accent-text">。</span></h2></div>
+        <p class="section-intro">从真实的学习项目出发，记录技术与思考。<br>课程实践、公开脱敏版与新项目探索均明确标注；<br class="desktop-break">不把课程成果包装成从零原创。</p>
+      </div>
+
+      <div class="project-controls" id="project-controls">
+        <div class="search-row">
+          <p class="filter-label" id="filter-label">按兴趣，找到一个起点</p>
+          <form class="project-search" id="project-search" role="search" aria-label="搜索作品集">
+            <label class="sr-only" for="project-query">搜索项目名称、描述或技术</label>
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+            <input id="project-query" name="q" type="search" placeholder="搜索项目、技术或关键词…" autocomplete="off" maxlength="160" disabled>
+            <button id="clear-search" class="clear-search" type="button" aria-label="清除搜索内容" hidden><span aria-hidden="true">×</span></button>
+          </form>
+        </div>
+        <div class="category-filters" id="category-filters" role="group" aria-labelledby="filter-label"></div>
+      </div>
+      <div class="results-bar"><p id="results-summary" role="status" aria-live="polite" aria-atomic="true">项目档案由本地数据源生成。</p><span>源码开放阅读 · 不提供在线后端演示</span></div>
+      <div id="project-results" aria-busy="false">
+        <div class="project-state" id="project-loading" hidden><span class="state-symbol loading-symbol" aria-hidden="true">[ · · · ]</span><h3>正在翻开项目档案</h3><p>从本地数据源读取项目，请稍候。</p></div>
+        <ul class="project-grid" id="project-grid" role="list" aria-label="项目列表"></ul>
+        <div class="project-state" id="project-empty" hidden><span class="state-symbol" aria-hidden="true">[ &nbsp; ]</span><h3 id="empty-title">还没有找到这个方向的项目</h3><p id="empty-description">试试其他关键词，或回到全部项目继续看看。</p><button class="button button-secondary" id="reset-filters" type="button">清除筛选，查看全部 <span aria-hidden="true">↗</span></button></div>
+        <div class="project-state" id="project-error" hidden><span class="state-symbol" aria-hidden="true">[ ! ]</span><h3>项目档案暂时没能打开</h3><p>请检查网络后重试。若在本地预览，请通过 HTTP(S) 服务访问，并确认 projects.json 可读取、格式正确。</p><button class="button button-secondary" id="retry-projects" type="button">重新加载 <span aria-hidden="true">↻</span></button></div>
+      </div>
+      <noscript><p class="noscript-note">项目列表需要 JavaScript 读取数据。你仍可浏览下方介绍，或前往 <a href="https://github.com/Flower-jie" target="_blank" rel="noopener noreferrer">GitHub（新窗口）</a> 与 <a href="https://gitee.com/Sunflower-hua" target="_blank" rel="noopener noreferrer">Gitee（新窗口）</a> 查看源码。</p></noscript>
+      <p class="project-maintenance"><span aria-hidden="true">↳</span> 一份数据，两处相遇。项目卡片同时提供 GitHub / Gitee 源码入口。</p>
+    </section>
+
+    <section class="knowledge-section container" id="knowledge" aria-labelledby="knowledge-title" tabindex="-1">
+      <div class="knowledge-panel">
+        <div class="knowledge-copy"><p class="eyebrow">02 / THE NEXT EXPLORATION</p><div class="feature-label"><span class="status-dot" aria-hidden="true"></span> LEARNHUB AI · 本地学习版</div><h2 id="knowledge-title">不只得到答案，<br>也找到<span>答案的来处。</span></h2><p>独立的知识库学习助手：导入学习资料、检索知识片段、展开来源引用，再将收获整理为笔记。会话与资料保存在本地 H2 数据库中。</p><ul class="feature-points"><li><span aria-hidden="true">01</span><div><h3>先检索，不必先接入模型</h3><p>本地资料检索无需模型 API，先把查找与阅读的路径走通。</p></div></li><li><span aria-hidden="true">02</span><div><h3>模型可选，配置由你掌握</h3><p>模型问答需自行配置兼容的模型服务与密钥，可能产生服务商费用。</p></div></li></ul><a class="text-link" href="#projects">查看项目与源码入口 <span aria-hidden="true">↗</span></a></div>
+        <div class="retrieval-card">
+          <div class="retrieval-header"><span>从资料到回答</span><span class="mini-label">RAG / 学习路径</span></div>
+          <ol class="retrieval-flow">
+            <li><span class="flow-icon" aria-hidden="true">TXT</span><div><span class="flow-step">01 / YOUR KNOWLEDGE</span><h3>自己的文档与笔记</h3><p>让学习资料成为知识的起点</p></div></li>
+            <li class="retrieval-local"><span class="flow-icon" aria-hidden="true">{ }</span><div><span class="flow-step">02 / LOCAL RETRIEVAL</span><h3>检索相关知识片段</h3><p>本地检索 · 无需模型 API</p></div><span class="local-pill">LOCAL</span></li>
+            <li><span class="flow-icon" aria-hidden="true">AI</span><div><span class="flow-step">03 / OPTIONAL MODEL</span><h3>携带上下文，探索问答</h3><p>模型能力需自行配置</p></div></li>
+          </ol>
+          <div class="retrieval-stack"><span>Java 21</span><span>Spring Boot 3.5</span><span>H2</span><span>RAG</span></div>
+          <p class="retrieval-disclaimer">默认词项哈希检索不等同于语义向量。未配置生成模型时只展示证据，不模拟 AI 回答。本页提供源码入口，后端需在本地启动。</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2>联系我</h2>
-      <p>如果你对我的工作感兴趣，欢迎联系交流。</p>
-      <div class="contact-info">
-        <a href="mailto:2515468707@qq.com" class="contact-link">Email</a>
-        <a href="https://github.com/Flower-jie" class="contact-link">GitHub</a>
+    <section class="section container learning-section" id="learning" aria-labelledby="learning-title" tabindex="-1">
+      <div class="section-heading"><div><p class="eyebrow">03 / LEARNING MAP</p><h2 id="learning-title">把知识连成线，<br>把实践走得更深。</h2></div><p class="section-intro">不罗列“精通”，只记录正在走的路。<br>每一条路线，都尽量用项目来理解和验证。</p></div>
+      <ol class="learning-grid">
+        <li class="learning-card"><div class="learning-card-top"><span class="route-number">01</span><span class="route-label">FOUNDATION</span></div><h3>把基础写扎实</h3><p>从 Java 语法、集合与并发，到关系型数据库与 HTTP，理解代码为什么这样运行。</p><div class="route-tags"><span>Java</span><span>SQL</span><span>HTTP</span></div><a href="#projects">在项目中练习 <span aria-hidden="true">↗</span></a></li>
+        <li class="learning-card"><div class="learning-card-top"><span class="route-number">02</span><span class="route-label">BACKEND</span></div><h3>在业务里理解系统</h3><p>借助教育、本地生活与外卖课程实践，学习接口设计、缓存、实时通信与微服务协作。</p><div class="route-tags"><span>Spring Boot</span><span>Redis</span><span>MyBatis</span></div><a href="#projects">回到课程实践 <span aria-hidden="true">↗</span></a></li>
+        <li class="learning-card"><div class="learning-card-top"><span class="route-number">03</span><span class="route-label">EXPLORATION</span></div><h3>探索 AI 应用边界</h3><p>学习检索增强生成与模型接入，区分本地能力与外部依赖，关注回答依据与使用成本。</p><div class="route-tags"><span>Spring AI</span><span>RAG</span><span>知识库</span></div><a href="#knowledge">了解当前探索 <span aria-hidden="true">↗</span></a></li>
+      </ol>
+    </section>
+
+    <section class="section container faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="faq-heading"><p class="eyebrow">04 / A LITTLE CONTEXT</p><h2 id="faq-title">你可能还想知道。</h2><p>关于项目、源码，<br>以及这份作品集的边界。</p></div>
+      <div class="faq-list">
+        <details><summary>这些项目都是从零原创的吗？<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>不是。天机学堂、黑马点评和苍穹外卖是课程学习与实践项目，对外提供公开脱敏版，不代表商业交付或工作经历。LearnHub AI 是独立实现的知识库学习项目；本作品集用于整理与分享这些实践。</p></div></details>
+        <details><summary>AI 学习助手需要配置 API 吗？<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>本地知识检索不需要模型 API。要使用模型生成回答，需要自行配置兼容的模型服务及相关密钥，费用和可用性由所选服务决定。默认词项哈希检索与可选语义向量明确区分；没有足够证据时不会生成答案。模型配置说明见本地应用的连接页面。</p></div></details>
+        <details><summary>可以直接在线体验后端项目吗？<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>本网站是静态作品集，没有部署这些项目的在线后端演示。项目卡片链接均为源码入口；本地运行需要按对应仓库说明准备 Java、数据库及其他依赖。不要在公开仓库提交自己的密钥或真实业务数据。</p></div></details>
+        <details><summary>GitHub 和 Gitee 怎么选择？<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>每张卡片提供两个平台的对应仓库入口，可按访问习惯选择。课程项目在 Gitee 使用带 <code>-public</code> 的公开脱敏版仓库名。两端内容及更新时间请以各仓库提交记录为准，不承诺实时自动镜像。</p></div></details>
+        <details><summary>这份项目集会如何继续更新？<span aria-hidden="true">+</span></summary><div class="faq-answer"><p>项目名称、分类、技术、状态及双平台地址集中维护在 <code>projects.json</code>。新增项目只需添加一条数据，页面会自动生成卡片、分类数量和搜索内容，无需手动修改页面布局。</p></div></details>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 Flower Jie. All rights reserved.</p>
-    </div>
-  </footer>
+    <section class="contact-section container" id="contact" aria-labelledby="contact-title" tabindex="-1">
+      <div class="contact-panel"><div><p class="eyebrow">LET’S KEEP BUILDING</p><h2 id="contact-title">下一次，<br>在代码里见<span>。</span></h2><p>欢迎看看源码，聊聊 Java、AI，<br>或者分享一个值得动手的小想法。</p></div><div class="contact-actions"><a class="button button-dark" href="https://github.com/Flower-jie" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></a><a class="button button-outline" href="https://gitee.com/Sunflower-hua" target="_blank" rel="noopener noreferrer">在 Gitee 一起交流 <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></a><span class="contact-caption">两个平台，同一个热爱实践的人。</span></div><span class="contact-decoration" aria-hidden="true">{ }</span></div>
+    </section>
+  </main>
 
-  <script src="script.js"></script>
+  <footer class="site-footer container"><div><a class="footer-brand" href="#home">Flower Jie<span>.</span></a><p>花俊杰 · Java 与 AI 应用学习 / 实践</p></div><div class="footer-right"><div class="footer-links"><a href="https://github.com/Flower-jie" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></a><a href="https://gitee.com/Sunflower-hua" target="_blank" rel="noopener noreferrer">Gitee <span aria-hidden="true">↗</span><span class="sr-only">（新窗口打开）</span></a><a href="#home">回到顶部 <span aria-hidden="true">↑</span></a></div><p>© <span id="current-year">2026</span> Flower Jie. 保持好奇，持续生长。</p></div></footer>
 </body>
 </html>
